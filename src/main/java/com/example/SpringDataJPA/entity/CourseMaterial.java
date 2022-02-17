@@ -27,6 +27,10 @@ public class CourseMaterial {
     private String url;
 
     @OneToOne(
+
+            // usecase to understand Cascade
+            //if we try to add a Coursematerial with a course we will have this exception
+            // (transient instance must be saved before current operation) so we can fix it with the Cascade Parameter
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             optional = false

@@ -41,7 +41,6 @@ public interface StudentRepository extends JpaRepository<Student,Long> {
     )
     Student getStudentByEmailAddressNativeNamedParam(@Param("emailId") String emailId);
 
-
     @Modifying
     @Transactional
     @Query(

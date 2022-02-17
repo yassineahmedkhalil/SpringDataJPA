@@ -1,6 +1,7 @@
 package com.example.SpringDataJPA.repository;
 
 import com.example.SpringDataJPA.entity.Course;
+import com.example.SpringDataJPA.entity.CourseMaterial;
 import com.example.SpringDataJPA.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ class CourseRepositoryTest {
         System.out.println("courses = " + courses);
     }
 
-
     @Test
     public void saveCourseWithTeacher(){
         Teacher teacher = Teacher.builder()
@@ -36,5 +36,25 @@ class CourseRepositoryTest {
                 .build();
 
     courseRepository.save(course);
+    }
+
+    @Test
+    public void saveCourseWithMaterial(){
+        Course course1 =Course.builder()
+                .credit(1)
+                .title("ss")
+                .build();
+
+        CourseMaterial courseMaterial = CourseMaterial.builder()
+                .url("www.udemy.com")
+                .build();
+
+        Course course = Course.builder()
+                .title("soap")
+                .credit(2)
+                .courseMaterial(courseMaterial)
+                .build();
+
+        courseRepository.save(course);
     }
 }
